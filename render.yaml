@@ -3,9 +3,11 @@ services:
     name: sahara-finance-api
     runtime: node
     plan: free
-    rootDir: "iit delhi/backend"
-    buildCommand: "npm install && npm run build"
-    startCommand: "npm start"
+    buildCommand: "cd \"iit delhi/backend\" && npm install && npm run build"
+    startCommand: "cd \"iit delhi/backend\" && node dist/index.js"
+    envVars:
+      - key: NODE_VERSION
+        value: "18"
     envVars:
       - key: NODE_ENV
         value: production
