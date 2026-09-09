@@ -3,6 +3,7 @@ import { createServer } from "http";
 import cors from "cors";
 import helmet from "helmet";
 import path from "path";
+import fs from "fs";
 import { fileURLToPath } from "url";
 import mongoose from "mongoose";
 import { env } from "./config/env";
@@ -150,11 +151,12 @@ async function startServer() {
   // 9. Centralized Error Handling for API routes
   app.use(errorHandler);
 
-  // 10. Serve static files in production if frontend is co-hosted
-  const staticPath =
-    env.NODE_ENV === "production"
-      ? path.resolve(__dirname, "public")
-      : path.resolve(__dirname, "..", "dist", "public");
+  // 10. Serve static files in production or if frontend is bundled in public
+  const staticPath = fs.existsSync(path.resolve(__dirname, "..", "public"))
+    ? path.resolve(__dirname, "..", "public")
+    : fs.existsSync(path.resolve(__dirname, "public"))
+    ? path.resolve(__dirname, "public")
+    : path.resolve(__dirname, "..", "dist", "public");
 
   app.use(express.static(staticPath));
 

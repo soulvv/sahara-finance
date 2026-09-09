@@ -22,7 +22,7 @@ export class EntityExtractorService {
     // Hindi Romanized (Hinglish)
     "ek": 1, "do": 2, "teen": 3, "chaar": 4, "paanch": 5, "panch": 5,
     "chhe": 6, "saat": 7, "aath": 8, "nau": 9, "das": 10,
-    "sau": 100, "so": 100, "hazaar": 1000, "hazar": 1000, "lakh": 100000,
+    "sau": 100, "so": 100, "hazaar": 1000, "hazar": 1000,
 
     // Devanagari Hindi
     "एक": 1, "दो": 2, "तीन": 3, "चार": 4, "पाँच": 5, "पांच": 5,
