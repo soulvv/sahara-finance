@@ -8,7 +8,6 @@ services:
     envVars:
       - key: NODE_VERSION
         value: "18"
-    envVars:
       - key: NODE_ENV
         value: production
       - key: PORT
@@ -25,8 +24,6 @@ services:
         value: "*"
       - key: OMNIDIM_MODE
         value: real
-      - key: OMNIDIM_API_KEY
-        value: OhgDtBtkYX7Z7rnCSFJ3kxkCUBd3gKw1xKNrxMnKTD0
       - key: OMNIDIM_AGENT_ID
         value: "246626"
       - key: OMNIDIM_BASE_URL
