@@ -1,0 +1,333 @@
+/* Mitti & Signal — warm ivory ground, ink trust, turmeric signal; 8px rhythm, illustrated warmth, calm guided motion. */
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+@theme inline {
+  --radius-sm: calc(var(--radius) - 5px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+}
+:root {
+  --radius: 1.15rem;
+  --background: #f8f4eb;
+  --foreground: #17324d;
+  --card: #fffdf8;
+  --card-foreground: #17324d;
+  --primary: #17324d;
+  --primary-foreground: #fffdf8;
+  --muted: #eee8db;
+  --muted-foreground: #66717b;
+  --border: #e4dccd;
+  --input: #ded5c5;
+  --ring: #e6a62d;
+  --destructive: #b65c4a;
+  --destructive-foreground: #fffdf8;
+
+  /* Sahara illustrated theme tokens */
+  --sahara-marigold: #e6a62d;
+  --sahara-teal: #2a8c7a;
+  --sahara-sunset: #e8924a;
+  --sahara-terracotta: #c4704d;
+  --sahara-leaf: #5b936d;
+  --sahara-sky: #7db4c8;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  background: #f0ebe0;
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(
+      ellipse at 15% 10%,
+      rgba(230, 166, 45, 0.08),
+      transparent 28rem
+    ),
+    radial-gradient(
+      ellipse at 85% 80%,
+      rgba(91, 147, 109, 0.05),
+      transparent 24rem
+    ),
+    #f0ebe0;
+  color: var(--foreground);
+  font-family:
+    "Plus Jakarta Sans", "Noto Sans Devanagari", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+input {
+  border: none;
+}
+::selection {
+  background: #f0c766;
+  color: #17324d;
+}
+
+/* ─── Sahara Illustrated Grain ─── */
+.sahara-grain {
+  background-image: radial-gradient(rgba(23, 50, 77, 0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* ─── Paper grain (legacy compat) ─── */
+.paper-grain {
+  background-image: radial-gradient(rgba(23, 50, 77, 0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* ─── App Shell ─── */
+.app-shell {
+  min-height: 100vh;
+}
+.app-frame {
+  min-height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 36px;
+  padding: 32px;
+  align-items: start;
+}
+.phone {
+  min-height: calc(100vh - 64px);
+  max-width: 560px;
+  width: 100%;
+  margin: 0 auto;
+  background: #f8f4eb;
+  border: 1px solid rgba(23, 50, 77, 0.08);
+  box-shadow:
+    0 0 0 1px rgba(23, 50, 77, 0.03),
+    0 4px 8px rgba(55, 42, 21, 0.04),
+    0 16px 48px rgba(55, 42, 21, 0.1),
+    0 32px 80px rgba(55, 42, 21, 0.06);
+  border-radius: 36px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.content-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 22px 108px;
+  -webkit-overflow-scrolling: touch;
+}
+.safe-bottom {
+  padding-bottom: max(22px, env(safe-area-inset-bottom));
+}
+
+/* ─── Signal Notch ─── */
+.signal-notch {
+  width: 38px;
+  height: 6px;
+  border-radius: 9px;
+  background: linear-gradient(90deg, #e6a62d, #efb23e);
+  display: inline-block;
+}
+
+/* ─── Primary Button ─── */
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  border-radius: 16px;
+  padding: 0 22px;
+  background: #17324d;
+  color: #fffdf8;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  transition:
+    transform 150ms cubic-bezier(0.23, 1, 0.32, 1),
+    background 200ms ease,
+    box-shadow 200ms ease;
+  box-shadow: 0 2px 8px rgba(23, 50, 77, 0.15);
+}
+.primary-button:hover {
+  background: #1d3f5e;
+  box-shadow: 0 4px 16px rgba(23, 50, 77, 0.2);
+}
+.primary-button:active {
+  transform: scale(0.97);
+  box-shadow: 0 1px 4px rgba(23, 50, 77, 0.1);
+}
+.primary-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ─── Secondary Button ─── */
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  border: 1.5px solid #d9cfbe;
+  border-radius: 16px;
+  padding: 0 20px;
+  background: #fffdf8;
+  color: #17324d;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  transition:
+    transform 150ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+.secondary-button:hover {
+  border-color: #e6a62d;
+  box-shadow: 0 2px 8px rgba(230, 166, 45, 0.1);
+}
+.secondary-button:active {
+  transform: scale(0.97);
+}
+
+/* ─── Illustrated Theme Card ─── */
+.sahara-card {
+  background: #fffdf8;
+  border: 1px solid #e4dccd;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(55, 42, 21, 0.06);
+  transition:
+    box-shadow 200ms ease,
+    transform 150ms ease;
+}
+.sahara-card:hover {
+  box-shadow: 0 8px 24px rgba(55, 42, 21, 0.1);
+}
+
+/* ─── Warm accent strip — evokes marigold garlands ─── */
+.marigold-strip {
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #e6a62d, #e8924a, #e6a62d);
+}
+
+/* ─── Focus States (Accessibility) ─── */
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid #e6a62d;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* ─── Custom Scrollbar ─── */
+.content-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.content-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.content-scroll::-webkit-scrollbar-thumb {
+  background: #d9cfbe;
+  border-radius: 4px;
+}
+
+/* ─── Demo Rail (Desktop) ─── */
+.demo-rail {
+  position: sticky;
+  top: 32px;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 960px) {
+  .app-frame {
+    display: block;
+    padding: 0;
+  }
+  .phone {
+    min-height: 100vh;
+    min-height: 100dvh;
+    border-radius: 0;
+    border: 0;
+    box-shadow: none;
+    max-width: none;
+  }
+  .demo-rail {
+    display: none !important;
+  }
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+}
+
+/* ─── Senior & Universal Accessibility Modes (Phase 5) ─── */
+.senior-mode {
+  font-size: 115% !important;
+}
+.senior-mode button,
+.senior-mode input,
+.senior-mode a {
+  min-height: 52px;
+  font-size: 1.05rem;
+}
+.senior-mode p,
+.senior-mode span,
+.senior-mode label {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.high-contrast {
+  --background: #ffffff !important;
+  --foreground: #000000 !important;
+  --card: #ffffff !important;
+  --border: #000000 !important;
+  --primary: #000000 !important;
+}
+.high-contrast * {
+  border-color: #000000 !important;
+}
+
+.vi-mode *:focus-visible {
+  outline: 4px solid #e6a62d !important;
+  outline-offset: 4px !important;
+}
+
