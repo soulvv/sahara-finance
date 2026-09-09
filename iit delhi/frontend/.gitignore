@@ -6,3 +6,5 @@ dist/
 *.log
 .manus-logs/
 .DS_Store
+
+.vercel

@@ -1,10 +1,14 @@
-import { jsxLocPlugin } from "@builder.io/vite-plugin-jsx-loc";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import fs from "node:fs";
 import path from "node:path";
 import { defineConfig, type Plugin, type ViteDevServer } from "vite";
-import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
+
+// Optional local-dev plugins (not available on Vercel/CI)
+let jsxLocPlugin: (() => Plugin) | null = null;
+let vitePluginManusRuntime: (() => Plugin) | null = null;
+try { jsxLocPlugin = (await import("@builder.io/vite-plugin-jsx-loc")).jsxLocPlugin; } catch { /* not installed in CI */ }
+try { vitePluginManusRuntime = (await import("vite-plugin-manus-runtime")).vitePluginManusRuntime; } catch { /* not installed in CI */ }
 
 // =============================================================================
 // Manus Debug Collector - Vite Plugin
@@ -173,11 +177,11 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-const plugins = [
+const plugins: Plugin[] = [
   react(),
   tailwindcss(),
-  jsxLocPlugin(),
-  vitePluginManusRuntime(),
+  ...(jsxLocPlugin ? [jsxLocPlugin()] : []),
+  ...(vitePluginManusRuntime ? [vitePluginManusRuntime()] : []),
   vitePluginManusDebugCollector(),
   vitePluginStorageProxy(),
 ];
