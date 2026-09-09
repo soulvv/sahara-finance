@@ -3,9 +3,9 @@ services:
     name: sahara-finance-api
     runtime: node
     plan: free
-    rootDir: iit delhi/backend
-    buildCommand: npm install && npm run build
-    startCommand: npm start
+    rootDir: "iit delhi/backend"
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm start"
     envVars:
       - key: NODE_ENV
         value: production
@@ -18,14 +18,14 @@ services:
       - key: OTP_MODE
         value: demo
       - key: OTP_DEV_MODE
-        value: true
+        value: "true"
       - key: CLIENT_ORIGIN
         value: "*"
       - key: OMNIDIM_MODE
         value: real
       - key: OMNIDIM_API_KEY
-        sync: false
+        value: OhgDtBtkYX7Z7rnCSFJ3kxkCUBd3gKw1xKNrxMnKTD0
       - key: OMNIDIM_AGENT_ID
-        value: 246626
+        value: "246626"
       - key: OMNIDIM_BASE_URL
         value: https://backend.omnidim.io/api/v1
